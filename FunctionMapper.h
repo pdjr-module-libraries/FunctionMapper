@@ -1,7 +1,7 @@
 #ifndef FUNCTION_MAPPER_H
 #define FUNCTION_MAPPER_H
 
-#include "ModuleOperatorInterfaceClient.h"
+#include <ModuleOperatorInterfaceClient.h>
 
 /**
  * @brief Class providing a mapping between integer function codes and
