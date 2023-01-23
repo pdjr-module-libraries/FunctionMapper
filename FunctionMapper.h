@@ -1,5 +1,5 @@
-#ifndef MODULE_FUNCTION_MANAGER_H
-#define MODULE_FUNCTION_MANAGER_H
+#ifndef FUNCTION_MAPPER_H
+#define FUNCTION_MAPPER_H
 
 #include "ModuleOperatorInterfaceClient.h"
 
@@ -8,7 +8,7 @@
  *        associated functions which support the requirements of
  *        ModuleInterfaceHandler.
  */
-class ModuleFu: public ModuleOperatorInterfaceClient {
+class FunctionMapper: public ModuleOperatorInterfaceClient {
   
   public:
 
@@ -64,7 +64,7 @@ class ModuleFu: public ModuleOperatorInterfaceClient {
      *                           FunctionHandler so that it can only
      *                           hold @param functionMapArray. 
      */
-    FunctionHandler(FunctionMap *functionMapArray, unsigned int size = 0);
+    FunctionMapper(FunctionMap *functionMapArray, unsigned int size = 0);
 
     bool addHandler(unsigned char functionCode, bool (*handler)(unsigned char, unsigned char));
 
