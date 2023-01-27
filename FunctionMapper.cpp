@@ -1,6 +1,6 @@
 #include <FunctionMapper.h>
 
-FunctionMapper::FunctionMapper(FunctionMap *functionMapArray, unsigned int size) {
+tFunctionMapper::tFunctionMapper(FunctionMap *functionMapArray, unsigned int size) {
   unsigned int fmaSize = 0;
 
   if (functionMapArray != 0) while (functionMapArray[fmaSize].handler != 0) fmaSize++;
@@ -15,7 +15,7 @@ FunctionMapper::FunctionMapper(FunctionMap *functionMapArray, unsigned int size)
   }
 }
 
-bool FunctionMapper::addHandler(unsigned char functionCode, bool (*handler)(unsigned char, unsigned char)) {
+bool tFunctionMapper::addHandler(unsigned char functionCode, bool (*handler)(unsigned char, unsigned char)) {
   int slot = -1;
   for (unsigned int i = 0; i < this->arraySize; i++) {
     if (this->functionMapArray[i].handler == 0) slot = i;
@@ -27,7 +27,7 @@ bool FunctionMapper::addHandler(unsigned char functionCode, bool (*handler)(unsi
   return(slot != -1);
 }
 
-bool FunctionMapper::validateAddress(unsigned char functionCode) {
+bool tFunctionMapper::validateAddress(unsigned char functionCode) {
   bool retval = false;
 
   for (unsigned int i = 0; this->functionMapArray[i].handler != 0; i++) {
@@ -39,7 +39,7 @@ bool FunctionMapper::validateAddress(unsigned char functionCode) {
   return(retval);
 }
 
-bool FunctionMapper::processValue(unsigned char functionCode, unsigned char value) {
+bool tFunctionMapper::processValue(unsigned char functionCode, unsigned char value) {
   bool retval = false;
 
   for (unsigned int i = 0; this->functionMapArray[i].handler != 0; i++) {

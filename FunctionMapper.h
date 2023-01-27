@@ -8,7 +8,7 @@
  *        associated functions which support the requirements of
  *        ModuleInterfaceHandler.
  */
-class FunctionMapper: public ModuleOperatorInterfaceClient {
+class tFunctionMapper: public tModuleOperatorInterfaceClient {
   
   public:
 
@@ -64,7 +64,7 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      *                           FunctionHandler so that it can only
      *                           hold @param functionMapArray. 
      */
-    FunctionMapper(FunctionMap *functionMapArray, unsigned int size = 0);
+    tFunctionMapper(FunctionMap *functionMapArray, unsigned int size = 0);
 
     bool addHandler(unsigned char functionCode, bool (*handler)(unsigned char, unsigned char));
 
