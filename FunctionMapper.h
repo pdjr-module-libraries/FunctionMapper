@@ -5,8 +5,8 @@
 
 /**
  * @brief Class providing a mapping between integer function codes and
- *        associated functions which support the requirements of
- *        ModuleInterfaceHandler.
+ * associated functions which support the requirements of
+ * ModuleInterfaceHandler.
  */
 class FunctionMapper: public ModuleOperatorInterfaceClient {
   
@@ -14,7 +14,7 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
 
     /**
      * @brief Structure mapping an integer functionCode to an associated
-     *        handler function.
+     * handler function.
      */
     typedef struct { unsigned int functionCode; bool (*handler)(unsigned char, unsigned char); } FunctionMap;
     
