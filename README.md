@@ -2,7 +2,7 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`class `[`FunctionMapper`](#class_function_mapper) | Class providing a mapping between integer function codes and associated functions which support the requirements of ModuleInterfaceHandler.
+`class `[`FunctionMapper`](#class_function_mapper) | Class providing a processing interface and storage for an arbitrary number of FunctionMaps. <br/> A [FunctionMap](#struct_function_mapper_1_1_function_map) implements a mapping between an integer function code and a function which complies with the requirements of ModuleInterfaceHandler.
 `struct `[`FunctionMapper::FunctionMap`](#struct_function_mapper_1_1_function_map) | 
 
 # class `FunctionMapper` 
@@ -12,7 +12,8 @@ class FunctionMapper
   : public ModuleOperatorInterfaceClient
 ```  
 
-Class providing a mapping between integer function codes and associated functions which support the requirements of ModuleInterfaceHandler.
+Class providing a processing interface and storage for an arbitrary number of FunctionMaps. 
+ A [FunctionMap](#struct_function_mapper_1_1_function_map) implements a mapping between an integer function code and a function which complies with the requirements of ModuleInterfaceHandler.
 
 ## Summary
 
