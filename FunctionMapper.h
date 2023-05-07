@@ -28,7 +28,7 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * FunctionHandler by passing a statically allocated array of
      * FunctionMaps to the constructor.
      * \n 
-     * @code
+     * @code{, unparsed}
      * FunctionMap myFunctionMap[] = {
      *   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
      *   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
