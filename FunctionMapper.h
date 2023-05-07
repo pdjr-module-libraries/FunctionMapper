@@ -15,25 +15,28 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
     /**
      * @brief Structure mapping an integer functionCode to an associated
      * handler function.
+     *
+     * @var functionCode - a unique integer value identifying the associated function.
+     * @var handler - ModuleInterfaceHandler function.
      */
     typedef struct { unsigned int functionCode; bool (*handler)(unsigned char, unsigned char); } FunctionMap;
     
     /**
      * @brief Construct a new FunctionHandler object.
      * 
-     * Zero or more FunctionMap definitions can be added to a
-     * FunctionHandler object at instantiation by passing a statically
-     * allocated array of FunctionMaps to the constructor.
+     * Zero or more FunctionMap definitions can be added to the new
+     * FunctionHandler by passing a statically allocated array of
+     * FunctionMaps to the constructor.
      * 
-     * @example
-     * ```
+     * @code
      * FunctionMap myFunctionMap[] = {
      *   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
      *   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
      *   { 0, 0 }
      * }
      * FunctionHandler myFunctionHandler(myFunctionMap);
-     * ```
+     * @endcode
+     * 
      * With a single array argument the FunctionHandler object is sized
      * to accommodate the supplied map array and use of the addHandler()
      * method to dynamically add more function maps is not possible.
@@ -44,8 +47,7 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * used to dynamically add more maps to the FunctionHandler after
      * instantiation.
      * 
-     * @example
-     * ```
+     * @code
      * FunctionMap myFunctionMap[] = {
      *   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
      *   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
@@ -55,17 +57,23 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * myFunctionHandler.addHandler(9, [](unsigned char functionCode, unsigned char value)->bool{ return(value > 99); });
      * 
      * bool isBig = myFunctionHandler.process(9, 101);
-     * ```
+     * @endcode
      * 
      * @param functionMapArray - array of FunctionMap structures or 0.
-     * @param size             - the maximum number of FunctionMaps
-     *                           that can be saved in FunctionHandler
-     *                           or zero (the default) to size
-     *                           FunctionHandler so that it can only
-     *                           hold @param functionMapArray. 
+     * @param size - the maximum number of FunctionMaps that can be
+     * saved in FunctionHandler or zero (the default) to size
+     * FunctionHandler so that it can only hold @param functionMapArray. 
      */
     FunctionMapper(FunctionMap *functionMapArray, unsigned int size = 0);
 
+    /**
+     * @brief Add a new FunctionMap to an existing FunctionMapper.
+     * 
+     * @param functionCode - the value of the map code property. 
+     * @param handler - the handler function to associate with functionCode.
+     * @return true - suceess.
+     * @return false - failure (the FunctionMapper was full).
+     */
     bool addHandler(unsigned char functionCode, bool (*handler)(unsigned char, unsigned char));
 
     /**
