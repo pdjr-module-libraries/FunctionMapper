@@ -10,6 +10,13 @@
  * A FunctionMap implements a mapping between an integer function code
  * and a function which complies with the requirements of
  * ModuleInterfaceHandler.
+ * The following example shows a FunctionMap associating function code
+ * (0) with an anonymous lambda function.
+ * \n 
+ * @code{.unparsed}
+ * { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } }
+ * @endcode
+ * \n 
  */
 class FunctionMapper: public ModuleOperatorInterfaceClient {
   
@@ -18,13 +25,6 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
     /**
      * @brief Structure mapping an integer function code to an
      * associated handler function.
-     * The following example shows a map associating function code
-     * (0) with an anonymous lambda function.
-     * \n 
-     * @code{.unparsed}
-     * { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } }
-     * @endcode
-     * \n 
      * @var functionCode - a unique integer value identifying the associated function.
      * @var handler - \p ModuleOperatorInterfaceHandler function.
      */
