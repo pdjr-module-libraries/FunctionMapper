@@ -3,8 +3,12 @@
 FunctionMapper::FunctionMapper(FunctionMap *functionMapArray, unsigned int size) {
   unsigned int fmaSize = 0;
 
-  if (functionMapArray != 0) while (functionMapArray[fmaSize].handler != 0) fmaSize++;
-  if (size < fmaSize) size = fmaSize;
+  if (functionMapArray != 0) {
+    while (functionMapArray[fmaSize].handler != 0) fmaSize++;
+    if (size < fmaSize) size = fmaSize;
+  } else {
+    size = (size == 0)?10:size;
+  }
 
   this->arraySize = size;
   this->functionMapArray = new FunctionMap[this->arraySize + 1];

@@ -17,14 +17,14 @@ Class providing a processing interface and storage for an arbitrary number of Fu
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public  `[`FunctionMapper`](#class_function_mapper_1a3e49c4e7559038ea0a7d3d979fd16431)`(`[`FunctionMap`](#struct_function_mapper_1_1_function_map)` * functionMapArray,unsigned int size)` | Construct a new [FunctionMapper](#class_function_mapper) object.
+`public  `[`FunctionMapper`](#class_function_mapper_1a0da0673c8c109e95f1d075b6935cbecd)`(`[`FunctionMap`](#struct_function_mapper_1_1_function_map)` * functionMapArray,unsigned int size)` | Construct a new [FunctionMapper](#class_function_mapper) object.
 `public bool `[`addHandler`](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)`(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)` | Add a new [FunctionMap](#struct_function_mapper_1_1_function_map) to an existing [FunctionMapper](#class_function_mapper).
 `public bool `[`validateAddress`](#class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7)`(unsigned char functionCode)` | Check that a function code is mapped to a function.
 `public bool `[`processValue`](#class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334)`(unsigned char functionCode,unsigned char value)` | #### Parameters
 
 ## Members
 
-#### `public  `[`FunctionMapper`](#class_function_mapper_1a3e49c4e7559038ea0a7d3d979fd16431)`(`[`FunctionMap`](#struct_function_mapper_1_1_function_map)` * functionMapArray,unsigned int size)` 
+#### `public  `[`FunctionMapper`](#class_function_mapper_1a0da0673c8c109e95f1d075b6935cbecd)`(`[`FunctionMap`](#struct_function_mapper_1_1_function_map)` * functionMapArray,unsigned int size)` 
 
 Construct a new [FunctionMapper](#class_function_mapper) object.
 
@@ -56,11 +56,9 @@ bool isBig = myFunctionHandler.process(9, 101);
 ```
 
 #### Parameters
-* `functionMapArray` - array of [FunctionMap](#struct_function_mapper_1_1_function_map) structures or 0. 
+* `functionMapArray` - optional array of [FunctionMap](#struct_function_mapper_1_1_function_map) structures. 
 
-* `size` - the maximum number of FunctionMaps that can be saved in FunctionHandler or zero (the default) to size FunctionHandler so that it can only hold
-
-* `functionMapArray.`
+* `size` - optional maximum number of FunctionMaps that can be saved in this [FunctionMapper](#class_function_mapper). If a functionMapArray is supplied and size is ommitted then the [FunctionMapper](#class_function_mapper) will be sized to exactly hold `functionMapArray`.
 
 #### `public bool `[`addHandler`](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)`(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)` 
 

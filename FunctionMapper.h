@@ -73,12 +73,13 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * bool isBig = myFunctionHandler.process(9, 101);
      * @endcode
      * \n 
-     * @param functionMapArray - array of FunctionMap structures or 0.
-     * @param size - the maximum number of FunctionMaps that can be
-     * saved in FunctionHandler or zero (the default) to size
-     * FunctionHandler so that it can only hold @param functionMapArray. 
+     * @param functionMapArray - optional array of FunctionMap structures.
+     * @param size - optional maximum number of FunctionMaps that can be
+     * saved in this FunctionMapper. If a functionMapArray is supplied
+     * and size is ommitted then the FunctionMapper will be sized to
+     * exactly hold \p functionMapArray. 
      */
-    FunctionMapper(FunctionMap *functionMapArray, unsigned int size = 0);
+    FunctionMapper(FunctionMap *functionMapArray = 0, unsigned int size = 0);
 
     /**
      * @brief Add a new FunctionMap to an existing FunctionMapper.
