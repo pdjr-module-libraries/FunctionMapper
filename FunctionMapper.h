@@ -6,7 +6,7 @@
 /**
  * @brief Class providing a mapping between integer function codes and
  * associated functions which support the requirements of
- * \p ModuleInterfaceHandler.
+ * ModuleInterfaceHandler.
  */
 class FunctionMapper: public ModuleOperatorInterfaceClient {
   
@@ -17,16 +17,16 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * handler function.
      *
      * @var functionCode - a unique integer value identifying the associated function.
-     * @var handler - \p ModuleInterfaceHandler function.
+     * @var handler - \p ModuleOperatorInterfaceHandler function.
      */
     typedef struct { unsigned int functionCode; bool (*handler)(unsigned char, unsigned char); } FunctionMap;
     
     /**
      * @brief Construct a new FunctionMapper object.
      * 
-     * Zero or more FunctionMap definitions can be added to the new
-     * FunctionHandler by passing a statically allocated array of
-     * FunctionMaps to the constructor.
+     * Zero or more FunctionMaps can be added to the new FunctionMapper
+     * by passing a statically allocated array of FunctionMaps to the
+     * constructor.
      * \n 
      * @code{.unparsed}
      * FunctionMap myFunctionMap[] = {
@@ -34,17 +34,20 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      *   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
      *   { 0, 0 }
      * }
+     * 
      * FunctionHandler myFunctionHandler(myFunctionMap);
      * @endcode
      * \n 
      * With a single array argument the FunctionMapper object is sized
-     * to accommodate the supplied map array and use of the \p addHandler()
-     * method (see below) is not possible.
+     * to exactly accommodate the supplied map array and subsequent use
+     * of the \p addHandler() method is not possible.
      * \n 
      * Optionally the constructor can be passed a second argument which
-     * specifies the maximum size of the FunctionHandler and, so long
-     * as the supplied array doesn't fill the map, addHandler() can be
-     * used to dynamically add more maps to the FunctionHandler after
+     * specifies the maximum number of FunctionMaps that can be stored
+     * in the new FunctionMapper.
+     * So long as any supplied function map array has no more than
+     * \p size elements, the \p addHandler() method can be used to
+     * dynamically add more maps to the FunctionHandler after
      * instantiation.
      * \n 
      * @code
@@ -53,7 +56,9 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      *   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
      *   { 0, 0 }
      * }
+     * 
      * FunctionHandler myFunctionHandler(myFunctionMap, 10);
+     * 
      * myFunctionHandler.addHandler(9, [](unsigned char functionCode, unsigned char value)->bool{ return(value > 99); });
      * 
      * bool isBig = myFunctionHandler.process(9, 101);

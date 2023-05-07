@@ -10,7 +10,7 @@
 \endhead
 {\ttfamily class}\`{}\+Function\+Mapper\`{}   &Class providing a mapping between integer function codes and associated functions which support the requirements of {\ttfamily Module\+Interface\+Handler}.   \\\cline{1-2}
 \end{longtabu}
-{\ttfamily struct}\`{}\+Function\+Mapper\+::Function\+Map\`{} $\vert$\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{class $<$tt$>$\+Function\+Mapper$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md24}
+{\ttfamily struct}\`{}\+Function\+Mapper\+::Function\+Map\`{} $\vert$\hypertarget{md_api_autotoc_md1}{}\doxysection{class $<$tt$>$\+Function\+Mapper$<$/tt$>$}\label{md_api_autotoc_md1}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{class\ FunctionMapper}
@@ -19,7 +19,7 @@
 \end{DoxyCode}
 
 
-Class providing a mapping between integer function codes and associated functions which support the requirements of {\ttfamily Module\+Interface\+Handler}.\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md25}
+Class providing a mapping between integer function codes and associated functions which support the requirements of {\ttfamily Module\+Interface\+Handler}.\hypertarget{md_api_autotoc_md2}{}\doxysubsection{Summary}\label{md_api_autotoc_md2}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
 \hline
@@ -35,8 +35,8 @@ Class providing a mapping between integer function codes and associated function
 {\ttfamily public bool}\`{}validate\+Address\`{}{\ttfamily (unsigned char function\+Code)}   &Check that a function code is mapped to a function.    \\\cline{1-2}
 {\ttfamily public bool}\`{}process\+Value\`{}{\ttfamily (unsigned char function\+Code,unsigned char value)}   &\#\#\#\# Parameters   \\\cline{1-2}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{Members}\label{md__r_e_a_d_m_e_autotoc_md26}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxyparagraph{$<$tt$>$public$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1a3e49c4e7559038ea0a7d3d979fd16431 \char`\"{}\`{}\+Function\+Mapper\`{}\char`\"{}$<$tt$>$($<$/tt$>$@ref struct\+\_\+function\+\_\+mapper\+\_\+1\+\_\+1\+\_\+function\+\_\+map \char`\"{}\`{}\+Function\+Map\`{}\char`\"{}$<$tt$>$$\ast$ function\+Map\+Array,unsigned int size)$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md27}
+\hypertarget{md_api_autotoc_md3}{}\doxysubsection{Members}\label{md_api_autotoc_md3}
+\hypertarget{md_api_autotoc_md4}{}\doxyparagraph{$<$tt$>$public$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1a3e49c4e7559038ea0a7d3d979fd16431 \char`\"{}\`{}\+Function\+Mapper\`{}\char`\"{}$<$tt$>$($<$/tt$>$@ref struct\+\_\+function\+\_\+mapper\+\_\+1\+\_\+1\+\_\+function\+\_\+map \char`\"{}\`{}\+Function\+Map\`{}\char`\"{}$<$tt$>$$\ast$ function\+Map\+Array,unsigned int size)$<$/tt$>$}\label{md_api_autotoc_md4}
 Construct a new Function\+Mapper object.
 
 Zero or more Function\+Map definitions can be added to the new Function\+Handler by passing a statically allocated array of Function\+Maps to the constructor. 
@@ -64,39 +64,39 @@ With a single array argument the Function\+Mapper object is sized to accommodate
 \DoxyCodeLine{\textcolor{keywordtype}{bool}\ isBig\ =\ myFunctionHandler.process(9,\ 101);}
 
 \end{DoxyCode}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxyparagraph{Parameters}\label{md__r_e_a_d_m_e_autotoc_md28}
+\hypertarget{md_api_autotoc_md5}{}\doxyparagraph{Parameters}\label{md_api_autotoc_md5}
 
 \begin{DoxyItemize}
 \item {\ttfamily function\+Map\+Array} -\/ array of Function\+Map structures or 0.
 \item {\ttfamily size} -\/ the maximum number of Function\+Maps that can be saved in Function\+Handler or zero (the default) to size Function\+Handler so that it can only hold
 \item {\ttfamily function\+Map\+Array.}
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxyparagraph{$<$tt$>$public bool$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1a8445f7492e82da8fe6dbbb957e9fc931 \char`\"{}\`{}add\+Handler\`{}\char`\"{}$<$tt$>$(unsigned char function\+Code,bool($\ast$)(unsigned char, unsigned char) handler)$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md29}
-Add a new Function\+Map to an existing Function\+Mapper.\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxyparagraph{Parameters}\label{md__r_e_a_d_m_e_autotoc_md30}
+\end{DoxyItemize}\hypertarget{md_api_autotoc_md6}{}\doxyparagraph{$<$tt$>$public bool$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1a8445f7492e82da8fe6dbbb957e9fc931 \char`\"{}\`{}add\+Handler\`{}\char`\"{}$<$tt$>$(unsigned char function\+Code,bool($\ast$)(unsigned char, unsigned char) handler)$<$/tt$>$}\label{md_api_autotoc_md6}
+Add a new Function\+Map to an existing Function\+Mapper.\hypertarget{md_api_autotoc_md7}{}\doxyparagraph{Parameters}\label{md_api_autotoc_md7}
 
 \begin{DoxyItemize}
 \item {\ttfamily function\+Code} -\/ the value of the map code property.
 \item {\ttfamily handler} -\/ the handler function to associate with function\+Code.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md31}{}\doxyparagraph{Returns}\label{md__r_e_a_d_m_e_autotoc_md31}
-true -\/ suceess.\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxyparagraph{Returns}\label{md__r_e_a_d_m_e_autotoc_md32}
-false -\/ failure (the Function\+Mapper was full).\hypertarget{md__r_e_a_d_m_e_autotoc_md33}{}\doxyparagraph{$<$tt$>$public bool$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1aeeae983303efa97168866e8ff68cf7c7 \char`\"{}\`{}validate\+Address\`{}\char`\"{}$<$tt$>$(unsigned char function\+Code)$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md33}
-Check that a function code is mapped to a function.\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxyparagraph{Parameters}\label{md__r_e_a_d_m_e_autotoc_md34}
+\end{DoxyItemize}\hypertarget{md_api_autotoc_md8}{}\doxyparagraph{Returns}\label{md_api_autotoc_md8}
+true -\/ suceess.\hypertarget{md_api_autotoc_md9}{}\doxyparagraph{Returns}\label{md_api_autotoc_md9}
+false -\/ failure (the Function\+Mapper was full).\hypertarget{md_api_autotoc_md10}{}\doxyparagraph{$<$tt$>$public bool$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1aeeae983303efa97168866e8ff68cf7c7 \char`\"{}\`{}validate\+Address\`{}\char`\"{}$<$tt$>$(unsigned char function\+Code)$<$/tt$>$}\label{md_api_autotoc_md10}
+Check that a function code is mapped to a function.\hypertarget{md_api_autotoc_md11}{}\doxyparagraph{Parameters}\label{md_api_autotoc_md11}
 
 \begin{DoxyItemize}
 \item {\ttfamily function\+Code} -\/ the functiom code to be checked.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxyparagraph{Returns}\label{md__r_e_a_d_m_e_autotoc_md35}
-true -\/ if a Function\+Map exists with the specified function code.\hypertarget{md__r_e_a_d_m_e_autotoc_md36}{}\doxyparagraph{Returns}\label{md__r_e_a_d_m_e_autotoc_md36}
-false -\/ if there is no Function\+Map with the specified function code.\hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxyparagraph{$<$tt$>$public bool$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1abb6078f5a7556add80f6587c5b2d1334 \char`\"{}\`{}process\+Value\`{}\char`\"{}$<$tt$>$(unsigned char function\+Code,unsigned char value)$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md37}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md38}{}\doxyparagraph{Parameters}\label{md__r_e_a_d_m_e_autotoc_md38}
+\end{DoxyItemize}\hypertarget{md_api_autotoc_md12}{}\doxyparagraph{Returns}\label{md_api_autotoc_md12}
+true -\/ if a Function\+Map exists with the specified function code.\hypertarget{md_api_autotoc_md13}{}\doxyparagraph{Returns}\label{md_api_autotoc_md13}
+false -\/ if there is no Function\+Map with the specified function code.\hypertarget{md_api_autotoc_md14}{}\doxyparagraph{$<$tt$>$public bool$<$/tt$>$@ref class\+\_\+function\+\_\+mapper\+\_\+1abb6078f5a7556add80f6587c5b2d1334 \char`\"{}\`{}process\+Value\`{}\char`\"{}$<$tt$>$(unsigned char function\+Code,unsigned char value)$<$/tt$>$}\label{md_api_autotoc_md14}
+\hypertarget{md_api_autotoc_md15}{}\doxyparagraph{Parameters}\label{md_api_autotoc_md15}
 
 \begin{DoxyItemize}
 \item {\ttfamily function\+Code} -\/ the code of the function to be called.
 \item {\ttfamily value} -\/ a value to be passed to the function.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md39}{}\doxyparagraph{Returns}\label{md__r_e_a_d_m_e_autotoc_md39}
-true -\/ the function returned true (whatever that means).\hypertarget{md__r_e_a_d_m_e_autotoc_md40}{}\doxyparagraph{Returns}\label{md__r_e_a_d_m_e_autotoc_md40}
-false -\/ the function returned false (whatever that means).\hypertarget{md__r_e_a_d_m_e_autotoc_md41}{}\doxysection{struct $<$tt$>$\+Function\+Mapper\+::\+Function\+Map$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md41}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md42}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md42}
+\end{DoxyItemize}\hypertarget{md_api_autotoc_md16}{}\doxyparagraph{Returns}\label{md_api_autotoc_md16}
+true -\/ the function returned true (whatever that means).\hypertarget{md_api_autotoc_md17}{}\doxyparagraph{Returns}\label{md_api_autotoc_md17}
+false -\/ the function returned false (whatever that means).\hypertarget{md_api_autotoc_md18}{}\doxysection{struct $<$tt$>$\+Function\+Mapper\+::\+Function\+Map$<$/tt$>$}\label{md_api_autotoc_md18}
+\hypertarget{md_api_autotoc_md19}{}\doxysubsection{Summary}\label{md_api_autotoc_md19}
 Members $\vert$ Descriptions ~\newline
- -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---$\vert$-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- {\ttfamily public unsigned int}\`{}function\+Code\`{} $\vert$ {\ttfamily public bool($\ast$}\`{}handler\`{} $\vert$\hypertarget{md__r_e_a_d_m_e_autotoc_md43}{}\doxysubsection{Members}\label{md__r_e_a_d_m_e_autotoc_md43}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md44}{}\doxyparagraph{$<$tt$>$public unsigned int$<$/tt$>$@ref struct\+\_\+function\+\_\+mapper\+\_\+1\+\_\+1\+\_\+function\+\_\+map\+\_\+1ae62581031d4d9bac8219e1cff35121e9 \char`\"{}\`{}function\+Code\`{}\char`\"{}}\label{md__r_e_a_d_m_e_autotoc_md44}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md45}{}\doxyparagraph{$<$tt$>$public bool($\ast$$<$/tt$>$@ref struct\+\_\+function\+\_\+mapper\+\_\+1\+\_\+1\+\_\+function\+\_\+map\+\_\+1a7050c1e20eb24dba37ff380f83edb48a \char`\"{}\`{}handler\`{}\char`\"{}}\label{md__r_e_a_d_m_e_autotoc_md45}
+ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---$\vert$-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- {\ttfamily public unsigned int}\`{}function\+Code\`{} $\vert$ {\ttfamily public bool($\ast$}\`{}handler\`{} $\vert$\hypertarget{md_api_autotoc_md20}{}\doxysubsection{Members}\label{md_api_autotoc_md20}
+\hypertarget{md_api_autotoc_md21}{}\doxyparagraph{$<$tt$>$public unsigned int$<$/tt$>$@ref struct\+\_\+function\+\_\+mapper\+\_\+1\+\_\+1\+\_\+function\+\_\+map\+\_\+1ae62581031d4d9bac8219e1cff35121e9 \char`\"{}\`{}function\+Code\`{}\char`\"{}}\label{md_api_autotoc_md21}
+\hypertarget{md_api_autotoc_md22}{}\doxyparagraph{$<$tt$>$public bool($\ast$$<$/tt$>$@ref struct\+\_\+function\+\_\+mapper\+\_\+1\+\_\+1\+\_\+function\+\_\+map\+\_\+1a7050c1e20eb24dba37ff380f83edb48a \char`\"{}\`{}handler\`{}\char`\"{}}\label{md_api_autotoc_md22}
 Generated by \href{https://sourcey.com/moxygen}{\texttt{ Moxygen}} 

@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="FunctionMapper.h" line="99" column="18" bodyfile="FunctionMapper.h" bodystart="99" bodyend="-1"/>
+        <location file="FunctionMapper.h" line="104" column="18" bodyfile="FunctionMapper.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_function_mapper_1a8718615d3fcee374dc2534449fec7d2b" prot="private" static="no" mutable="no">
         <type><ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> *</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="FunctionMapper.h" line="100" column="17" bodyfile="FunctionMapper.h" bodystart="100" bodyend="-1"/>
+        <location file="FunctionMapper.h" line="105" column="17" bodyfile="FunctionMapper.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,22 +55,25 @@
 <para>Construct a new <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Zero or more <ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor. <linebreak/>
+<para>Zero or more FunctionMaps can be added to the new <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> by passing a statically allocated array of FunctionMaps to the constructor. <linebreak/>
  <programlisting filename=".unparsed"><codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>0);<sp/>}<sp/>},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>1);<sp/>}<sp/>},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>0<sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">FunctionHandler<sp/>myFunctionHandler(myFunctionMap);</highlight></codeline>
 </programlisting> <linebreak/>
- With a single array argument the <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object is sized to accommodate the supplied map array and use of the <computeroutput><ref refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" kindref="member">addHandler()</ref></computeroutput> method (see below) is not possible. <linebreak/>
- Optionally the constructor can be passed a second argument which specifies the maximum size of the FunctionHandler and, so long as the supplied array doesn&apos;t fill the map, <ref refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" kindref="member">addHandler()</ref> can be used to dynamically add more maps to the FunctionHandler after instantiation. <linebreak/>
+ With a single array argument the <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object is sized to exactly accommodate the supplied map array and subsequent use of the <computeroutput><ref refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" kindref="member">addHandler()</ref></computeroutput> method is not possible. <linebreak/>
+ Optionally the constructor can be passed a second argument which specifies the maximum number of FunctionMaps that can be stored in the new <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref>. So long as any supplied function map array has no more than <computeroutput>size</computeroutput> elements, the <computeroutput><ref refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" kindref="member">addHandler()</ref></computeroutput> method can be used to dynamically add more maps to the FunctionHandler after instantiation. <linebreak/>
  <programlisting><codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>functionCode,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value)-&gt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">((value<sp/>%<sp/>2)<sp/>==<sp/>0);<sp/>}<sp/>},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>functionCode,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value)-&gt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">((value<sp/>%<sp/>2)<sp/>==<sp/>1);<sp/>}<sp/>},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>0<sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">FunctionHandler<sp/>myFunctionHandler(myFunctionMap,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">myFunctionHandler.addHandler(9,<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>functionCode,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value)-&gt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(value<sp/>&gt;<sp/>99);<sp/>});</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isBig<sp/>=<sp/>myFunctionHandler.process(9,<sp/>101);</highlight></codeline>
@@ -104,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="FunctionMapper.h" line="67" column="5" bodyfile="FunctionMapper.cpp" bodystart="3" bodyend="16"/>
+        <location file="FunctionMapper.h" line="72" column="5" bodyfile="FunctionMapper.cpp" bodystart="3" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -149,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="FunctionMapper.h" line="77" column="10" bodyfile="FunctionMapper.cpp" bodystart="18" bodyend="28"/>
+        <location file="FunctionMapper.h" line="82" column="10" bodyfile="FunctionMapper.cpp" bodystart="18" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -182,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="FunctionMapper.h" line="86" column="10" bodyfile="FunctionMapper.cpp" bodystart="30" bodyend="40"/>
+        <location file="FunctionMapper.h" line="91" column="10" bodyfile="FunctionMapper.cpp" bodystart="30" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -226,11 +229,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="FunctionMapper.h" line="96" column="10" bodyfile="FunctionMapper.cpp" bodystart="42" bodyend="52"/>
+        <location file="FunctionMapper.h" line="101" column="10" bodyfile="FunctionMapper.cpp" bodystart="42" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Class providing a mapping between integer function codes and associated functions which support the requirements of <computeroutput>ModuleInterfaceHandler</computeroutput>. </para>
+<para>Class providing a mapping between integer function codes and associated functions which support the requirements of ModuleInterfaceHandler. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -256,7 +259,7 @@
         <label>ModuleOperatorInterfaceClient</label>
       </node>
     </collaborationgraph>
-    <location file="FunctionMapper.h" line="11" column="1" bodyfile="FunctionMapper.h" bodystart="11" bodyend="102"/>
+    <location file="FunctionMapper.h" line="11" column="1" bodyfile="FunctionMapper.h" bodystart="11" bodyend="107"/>
     <listofallmembers>
       <member refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" prot="public" virt="non-virtual"><scope>FunctionMapper</scope><name>addHandler</name></member>
       <member refid="class_function_mapper_1a5daea7cb38ea0d8e05b83999a5d970e4" prot="private" virt="non-virtual"><scope>FunctionMapper</scope><name>arraySize</name></member>

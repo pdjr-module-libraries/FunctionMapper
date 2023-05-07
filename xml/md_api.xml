@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
-  <compounddef id="md__r_e_a_d_m_e" kind="page">
-    <compoundname>md_README</compoundname>
+  <compounddef id="md_api" kind="page">
+    <compoundname>md_api</compoundname>
     <title>Summary</title>
     <briefdescription>
     </briefdescription>
@@ -16,13 +16,13 @@
 </entry></row>
 </table>
 <computeroutput>struct</computeroutput>`FunctionMapper::FunctionMap` |</para>
-<sect1 id="md__r_e_a_d_m_e_1autotoc_md24">
+<sect1 id="md_api_1autotoc_md1">
 <title>class &lt;tt&gt;FunctionMapper&lt;/tt&gt;</title>
 <para><programlisting><codeline><highlight class="normal">class<sp/>FunctionMapper</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>:<sp/>public<sp/>ModuleOperatorInterfaceClient</highlight></codeline>
 </programlisting></para>
 <para>Class providing a mapping between integer function codes and associated functions which support the requirements of <computeroutput>ModuleInterfaceHandler</computeroutput>.</para>
-<sect2 id="md__r_e_a_d_m_e_1autotoc_md25">
+<sect2 id="md_api_1autotoc_md2">
 <title>Summary</title>
 <para><table rows="5" cols="2"><row>
 <entry thead="yes"><para>Members   </para>
@@ -47,9 +47,9 @@
 </table>
 </para>
 </sect2>
-<sect2 id="md__r_e_a_d_m_e_1autotoc_md26">
+<sect2 id="md_api_1autotoc_md3">
 <title>Members</title>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md27">
+<sect4 id="md_api_1autotoc_md4">
 <title>&lt;tt&gt;public&lt;/tt&gt;@ref class_function_mapper_1a3e49c4e7559038ea0a7d3d979fd16431 &quot;`FunctionMapper`&quot;&lt;tt&gt;(&lt;/tt&gt;@ref struct_function_mapper_1_1_function_map &quot;`FunctionMap`&quot;&lt;tt&gt;* functionMapArray,unsigned int size)&lt;/tt&gt;</title>
 <para>Construct a new FunctionMapper object.</para>
 <para>Zero or more FunctionMap definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor. <programlisting filename=".cpp"><codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
@@ -70,7 +70,7 @@
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isBig<sp/>=<sp/>myFunctionHandler.process(9,<sp/>101);</highlight></codeline>
 </programlisting></para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md28">
+<sect4 id="md_api_1autotoc_md5">
 <title>Parameters</title>
 <para><itemizedlist>
 <listitem><para><computeroutput>functionMapArray</computeroutput> - array of FunctionMap structures or 0.</para>
@@ -79,11 +79,11 @@
 </listitem></itemizedlist>
 </para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md29">
+<sect4 id="md_api_1autotoc_md6">
 <title>&lt;tt&gt;public bool&lt;/tt&gt;@ref class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931 &quot;`addHandler`&quot;&lt;tt&gt;(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)&lt;/tt&gt;</title>
 <para>Add a new FunctionMap to an existing FunctionMapper.</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md30">
+<sect4 id="md_api_1autotoc_md7">
 <title>Parameters</title>
 <para><itemizedlist>
 <listitem><para><computeroutput>functionCode</computeroutput> - the value of the map code property.</para>
@@ -91,37 +91,37 @@
 </listitem></itemizedlist>
 </para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md31">
+<sect4 id="md_api_1autotoc_md8">
 <title>Returns</title>
 <para>true - suceess.</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md32">
+<sect4 id="md_api_1autotoc_md9">
 <title>Returns</title>
 <para>false - failure (the FunctionMapper was full).</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md33">
+<sect4 id="md_api_1autotoc_md10">
 <title>&lt;tt&gt;public bool&lt;/tt&gt;@ref class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7 &quot;`validateAddress`&quot;&lt;tt&gt;(unsigned char functionCode)&lt;/tt&gt;</title>
 <para>Check that a function code is mapped to a function.</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md34">
+<sect4 id="md_api_1autotoc_md11">
 <title>Parameters</title>
 <para><itemizedlist>
 <listitem><para><computeroutput>functionCode</computeroutput> - the functiom code to be checked.</para>
 </listitem></itemizedlist>
 </para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md35">
+<sect4 id="md_api_1autotoc_md12">
 <title>Returns</title>
 <para>true - if a FunctionMap exists with the specified function code.</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md36">
+<sect4 id="md_api_1autotoc_md13">
 <title>Returns</title>
 <para>false - if there is no FunctionMap with the specified function code.</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md37">
+<sect4 id="md_api_1autotoc_md14">
 <title>&lt;tt&gt;public bool&lt;/tt&gt;@ref class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334 &quot;`processValue`&quot;&lt;tt&gt;(unsigned char functionCode,unsigned char value)&lt;/tt&gt;</title>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md38">
+<sect4 id="md_api_1autotoc_md15">
 <title>Parameters</title>
 <para><itemizedlist>
 <listitem><para><computeroutput>functionCode</computeroutput> - the code of the function to be called.</para>
@@ -129,35 +129,35 @@
 </listitem></itemizedlist>
 </para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md39">
+<sect4 id="md_api_1autotoc_md16">
 <title>Returns</title>
 <para>true - the function returned true (whatever that means).</para>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md40">
+<sect4 id="md_api_1autotoc_md17">
 <title>Returns</title>
 <para>false - the function returned false (whatever that means).</para>
 </sect4>
 </sect2>
 </sect1>
-<sect1 id="md__r_e_a_d_m_e_1autotoc_md41">
+<sect1 id="md_api_1autotoc_md18">
 <title>struct &lt;tt&gt;FunctionMapper::FunctionMap&lt;/tt&gt;</title>
-<sect2 id="md__r_e_a_d_m_e_1autotoc_md42">
+<sect2 id="md_api_1autotoc_md19">
 <title>Summary</title>
 <para>Members | Descriptions <linebreak/>
  -----------------------------<mdash/>|------------------------------------------<mdash/> <computeroutput>public unsigned int</computeroutput>`functionCode` | <computeroutput>public bool(*</computeroutput>`handler` |</para>
 </sect2>
-<sect2 id="md__r_e_a_d_m_e_1autotoc_md43">
+<sect2 id="md_api_1autotoc_md20">
 <title>Members</title>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md44">
+<sect4 id="md_api_1autotoc_md21">
 <title>&lt;tt&gt;public unsigned int&lt;/tt&gt;@ref struct_function_mapper_1_1_function_map_1ae62581031d4d9bac8219e1cff35121e9 &quot;`functionCode`&quot;</title>
 </sect4>
-<sect4 id="md__r_e_a_d_m_e_1autotoc_md45">
+<sect4 id="md_api_1autotoc_md22">
 <title>&lt;tt&gt;public bool(*&lt;/tt&gt;@ref struct_function_mapper_1_1_function_map_1a7050c1e20eb24dba37ff380f83edb48a &quot;`handler`&quot;</title>
 <para>Generated by <ulink url="https://sourcey.com/moxygen">Moxygen</ulink> </para>
 </sect4>
 </sect2>
 </sect1>
     </detaileddescription>
-    <location file="README.md"/>
+    <location file="api.md"/>
   </compounddef>
 </doxygen>

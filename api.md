@@ -2,7 +2,7 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`class `[`FunctionMapper`](#class_function_mapper) | Class providing a mapping between integer function codes and associated functions which support the requirements of `ModuleInterfaceHandler`.
+`class `[`FunctionMapper`](#class_function_mapper) | Class providing a mapping between integer function codes and associated functions which support the requirements of ModuleInterfaceHandler.
 `struct `[`FunctionMapper::FunctionMap`](#struct_function_mapper_1_1_function_map) | 
 
 # class `FunctionMapper` 
@@ -12,7 +12,7 @@ class FunctionMapper
   : public ModuleOperatorInterfaceClient
 ```  
 
-Class providing a mapping between integer function codes and associated functions which support the requirements of `ModuleInterfaceHandler`.
+Class providing a mapping between integer function codes and associated functions which support the requirements of ModuleInterfaceHandler.
 
 ## Summary
 
@@ -29,25 +29,28 @@ Class providing a mapping between integer function codes and associated function
 
 Construct a new [FunctionMapper](#class_function_mapper) object.
 
-Zero or more [FunctionMap](#struct_function_mapper_1_1_function_map) definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor. 
+Zero or more FunctionMaps can be added to the new [FunctionMapper](#class_function_mapper) by passing a statically allocated array of FunctionMaps to the constructor. 
 ```cpp
 FunctionMap myFunctionMap[] = {
   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
   { 0, 0 }
 }
+
 FunctionHandler myFunctionHandler(myFunctionMap);
 ```
 
- With a single array argument the [FunctionMapper](#class_function_mapper) object is sized to accommodate the supplied map array and use of the `[addHandler()](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method (see below) is not possible. 
- Optionally the constructor can be passed a second argument which specifies the maximum size of the FunctionHandler and, so long as the supplied array doesn't fill the map, [addHandler()](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931) can be used to dynamically add more maps to the FunctionHandler after instantiation. 
+ With a single array argument the [FunctionMapper](#class_function_mapper) object is sized to exactly accommodate the supplied map array and subsequent use of the `[addHandler()](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method is not possible. 
+ Optionally the constructor can be passed a second argument which specifies the maximum number of FunctionMaps that can be stored in the new [FunctionMapper](#class_function_mapper). So long as any supplied function map array has no more than `size` elements, the `[addHandler()](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method can be used to dynamically add more maps to the FunctionHandler after instantiation. 
 ```cpp
 FunctionMap myFunctionMap[] = {
   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
   { 0, 0 }
 }
+
 FunctionHandler myFunctionHandler(myFunctionMap, 10);
+
 myFunctionHandler.addHandler(9, [](unsigned char functionCode, unsigned char value)->bool{ return(value > 99); });
 
 bool isBig = myFunctionHandler.process(9, 101);

@@ -12,11 +12,15 @@
     <member refid="class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7" kind="function"><name>validateAddress</name></member>
     <member refid="class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334" kind="function"><name>processValue</name></member>
   </compound>
+  <compound refid="api_8md" kind="file"><name>api.md</name>
+  </compound>
   <compound refid="_function_mapper_8cpp" kind="file"><name>FunctionMapper.cpp</name>
   </compound>
   <compound refid="_function_mapper_8h" kind="file"><name>FunctionMapper.h</name>
   </compound>
   <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="md_api" kind="page"><name>md_api</name>
   </compound>
   <compound refid="md__r_e_a_d_m_e" kind="page"><name>md_README</name>
   </compound>

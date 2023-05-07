@@ -79,12 +79,12 @@ $(function() {
 <td class="markdownTableBodyNone"><code>class</code>`FunctionMapper`   </td><td class="markdownTableBodyNone">Class providing a mapping between integer function codes and associated functions which support the requirements of <code>ModuleInterfaceHandler</code>.   </td></tr>
 </table>
 <p><code>struct</code>`FunctionMapper::FunctionMap` |</p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
 class &lt;tt&gt;FunctionMapper&lt;/tt&gt;</h1>
 <div class="fragment"><div class="line">class FunctionMapper</div>
 <div class="line">  : public ModuleOperatorInterfaceClient</div>
 </div><!-- fragment --><p>Class providing a mapping between integer function codes and associated functions which support the requirements of <code>ModuleInterfaceHandler</code>.</p>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md2"></a>
 Summary</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -98,9 +98,9 @@ Summary</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>public bool</code>`processValue`<code>(unsigned char functionCode,unsigned char value)</code>   </td><td class="markdownTableBodyNone">#### Parameters   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Members</h2>
-<h4><a class="anchor" id="autotoc_md27"></a>
+<h4><a class="anchor" id="autotoc_md4"></a>
 &lt;tt&gt;public&lt;/tt&gt;@ref class_function_mapper_1a3e49c4e7559038ea0a7d3d979fd16431 "`FunctionMapper`"&lt;tt&gt;(&lt;/tt&gt;@ref struct_function_mapper_1_1_function_map "`FunctionMap`"&lt;tt&gt;* functionMapArray,unsigned int size)&lt;/tt&gt;</h4>
 <p>Construct a new FunctionMapper object.</p>
 <p>Zero or more FunctionMap definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor. </p><div class="fragment"><div class="line">FunctionMap myFunctionMap[] = {</div>
@@ -118,67 +118,67 @@ Members</h2>
 <div class="line">myFunctionHandler.addHandler(9, [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> functionCode, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> value)-&gt;<span class="keywordtype">bool</span>{ <span class="keywordflow">return</span>(value &gt; 99); });</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">bool</span> isBig = myFunctionHandler.process(9, 101);</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md5"></a>
 Parameters</h4>
 <ul>
 <li><code>functionMapArray</code> - array of FunctionMap structures or 0.</li>
 <li><code>size</code> - the maximum number of FunctionMaps that can be saved in FunctionHandler or zero (the default) to size FunctionHandler so that it can only hold</li>
 <li><code>functionMapArray.</code></li>
 </ul>
-<h4><a class="anchor" id="autotoc_md29"></a>
+<h4><a class="anchor" id="autotoc_md6"></a>
 &lt;tt&gt;public bool&lt;/tt&gt;@ref class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931 "`addHandler`"&lt;tt&gt;(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)&lt;/tt&gt;</h4>
 <p>Add a new FunctionMap to an existing FunctionMapper.</p>
-<h4><a class="anchor" id="autotoc_md30"></a>
+<h4><a class="anchor" id="autotoc_md7"></a>
 Parameters</h4>
 <ul>
 <li><code>functionCode</code> - the value of the map code property.</li>
 <li><code>handler</code> - the handler function to associate with functionCode.</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md31"></a>
+<h4><a class="anchor" id="autotoc_md8"></a>
 Returns</h4>
 <p>true - suceess.</p>
-<h4><a class="anchor" id="autotoc_md32"></a>
+<h4><a class="anchor" id="autotoc_md9"></a>
 Returns</h4>
 <p>false - failure (the FunctionMapper was full).</p>
-<h4><a class="anchor" id="autotoc_md33"></a>
+<h4><a class="anchor" id="autotoc_md10"></a>
 &lt;tt&gt;public bool&lt;/tt&gt;@ref class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7 "`validateAddress`"&lt;tt&gt;(unsigned char functionCode)&lt;/tt&gt;</h4>
 <p>Check that a function code is mapped to a function.</p>
-<h4><a class="anchor" id="autotoc_md34"></a>
+<h4><a class="anchor" id="autotoc_md11"></a>
 Parameters</h4>
 <ul>
 <li><code>functionCode</code> - the functiom code to be checked.</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md35"></a>
+<h4><a class="anchor" id="autotoc_md12"></a>
 Returns</h4>
 <p>true - if a FunctionMap exists with the specified function code.</p>
-<h4><a class="anchor" id="autotoc_md36"></a>
+<h4><a class="anchor" id="autotoc_md13"></a>
 Returns</h4>
 <p>false - if there is no FunctionMap with the specified function code.</p>
-<h4><a class="anchor" id="autotoc_md37"></a>
+<h4><a class="anchor" id="autotoc_md14"></a>
 &lt;tt&gt;public bool&lt;/tt&gt;@ref class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334 "`processValue`"&lt;tt&gt;(unsigned char functionCode,unsigned char value)&lt;/tt&gt;</h4>
-<h4><a class="anchor" id="autotoc_md38"></a>
+<h4><a class="anchor" id="autotoc_md15"></a>
 Parameters</h4>
 <ul>
 <li><code>functionCode</code> - the code of the function to be called.</li>
 <li><code>value</code> - a value to be passed to the function.</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md39"></a>
+<h4><a class="anchor" id="autotoc_md16"></a>
 Returns</h4>
 <p>true - the function returned true (whatever that means).</p>
-<h4><a class="anchor" id="autotoc_md40"></a>
+<h4><a class="anchor" id="autotoc_md17"></a>
 Returns</h4>
 <p>false - the function returned false (whatever that means).</p>
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 struct &lt;tt&gt;FunctionMapper::FunctionMap&lt;/tt&gt;</h1>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 Summary</h2>
 <p>Members | Descriptions <br  />
  -----------------------------&mdash;|------------------------------------------&mdash; <code>public unsigned int</code>`functionCode` | <code>public bool(*</code>`handler` |</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 Members</h2>
-<h4><a class="anchor" id="autotoc_md44"></a>
+<h4><a class="anchor" id="autotoc_md21"></a>
 &lt;tt&gt;public unsigned int&lt;/tt&gt;@ref struct_function_mapper_1_1_function_map_1ae62581031d4d9bac8219e1cff35121e9 "`functionCode`"</h4>
-<h4><a class="anchor" id="autotoc_md45"></a>
+<h4><a class="anchor" id="autotoc_md22"></a>
 &lt;tt&gt;public bool(*&lt;/tt&gt;@ref struct_function_mapper_1_1_function_map_1a7050c1e20eb24dba37ff380f83edb48a "`handler`"</h4>
 <p>Generated by <a href="https://sourcey.com/moxygen">Moxygen</a> </p>
 </div></div><!-- contents -->
