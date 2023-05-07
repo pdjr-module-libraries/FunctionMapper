@@ -1,10 +1,3 @@
-# Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`class `[`FunctionMapper`](#class_function_mapper) | Class providing a processing interface and storage for an arbitrary number of FunctionMaps. <br/> A [FunctionMap](#struct_function_mapper_1_1_function_map) implements a mapping between an integer function code and a function which complies with the requirements of ModuleInterfaceHandler. The following example shows a [FunctionMap](#struct_function_mapper_1_1_function_map) associating function code (0) with an anonymous lambda function. <br/>.
-`struct `[`FunctionMapper::FunctionMap`](#struct_function_mapper_1_1_function_map) | 
-
 # class `FunctionMapper` 
 
 ```
