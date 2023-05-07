@@ -1,0 +1,101 @@
+Class providing a mapping between integer function codes and associated functions which support the requirements of \textbackslash{}f\+CModule\+Interface\+Handler. ~\newline
+
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \{c++\}}
+\DoxyCodeLine{FunctionMapper\ (FunctionMap\ *\ functionMapArray,\ unsigned\ int\ size\ =\ 0)}
+
+\end{DoxyCode}
+ Construct a new \mbox{\hyperlink{class_function_mapper}{Function\+Mapper}} object. Zero or more Function\+Map definitions can be added to the new Function\+Handler by passing a statically allocated array of Function\+Maps to the constructor.
+
+.nf Function\+Map my\+Function\+Map\mbox{[}\mbox{]} = \{ \{ 0, \mbox{[}\mbox{]}(unsigned char function\+Code, unsigned char value)-\/\texorpdfstring{$>$}{>}bool\{ return((value \% 2) == 0); \} \}, \{ 1, \mbox{[}\mbox{]}(unsigned char function\+Code, unsigned char value)-\/\texorpdfstring{$>$}{>}bool\{ return((value \% 2) == 1); \} \}, \{ 0, 0 \} \} Function\+Handler my\+Function\+Handler(my\+Function\+Map); .fi
+
+With a single array argument the \mbox{\hyperlink{class_function_mapper}{Function\+Mapper}} object is sized to accommodate the supplied map array and use of the \textbackslash{}f\+Cadd\+Handler() method (see below) is not possible. Optionally the constructor can be passed a second argument which specifies the maximum size of the Function\+Handler and, so long as the supplied array doesn\textquotesingle{}t fill the map, add\+Handler() can be used to dynamically add more maps to the Function\+Handler after instantiation.
+
+.nf Function\+Map my\+Function\+Map\mbox{[}\mbox{]} = \{ \{ 0, \mbox{[}\mbox{]}(unsigned char function\+Code, unsigned char value)-\/\texorpdfstring{$>$}{>}bool\{ return((value \% 2) == 0); \} \}, \{ 1, \mbox{[}\mbox{]}(unsigned char function\+Code, unsigned char value)-\/\texorpdfstring{$>$}{>}bool\{ return((value \% 2) == 1); \} \}, \{ 0, 0 \} \} Function\+Handler my\+Function\+Handler(my\+Function\+Map, 10); my\+Function\+Handler.\+add\+Handler(9, \mbox{[}\mbox{]}(unsigned char function\+Code, unsigned char value)-\/\texorpdfstring{$>$}{>}bool\{ return(value $>$ 99); \}); bool is\+Big = my\+Function\+Handler.\+process(9, 101); .fi
+
+{\bfseries{Parameters}}
+\begin{DoxyItemize}
+\item {\ttfamily function\+Map\+Array} -\/ array of Function\+Map structures or 0.
+\item {\ttfamily size} -\/ the maximum number of Function\+Maps that can be saved in Function\+Handler or zero (the default) to size Function\+Handler so that it can only hold
+\item {\ttfamily function\+Map\+Array.}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \{c++\}}
+\DoxyCodeLine{bool\ addHandler\ (unsigned\ char\ functionCode,\ bool(*)(unsigned\ char,\ unsigned\ char)\ handler)}
+
+\end{DoxyCode}
+ Add a new Function\+Map to an existing \mbox{\hyperlink{class_function_mapper}{Function\+Mapper}}.
+
+{\bfseries{Parameters}}
+\begin{DoxyItemize}
+\item {\ttfamily function\+Code} -\/ the value of the map code property.
+\item {\ttfamily handler} -\/ the handler function to associate with function\+Code.
+\end{DoxyItemize}
+
+{\bfseries{Returns\+:}}
+\begin{DoxyItemize}
+\item true -\/ suceess.
+\item false -\/ failure (the \mbox{\hyperlink{class_function_mapper}{Function\+Mapper}} was full).
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \{c++\}}
+\DoxyCodeLine{bool\ processValue\ (unsigned\ char\ functionCode,\ unsigned\ char\ value)}
+
+\end{DoxyCode}
+
+
+{\bfseries{Parameters}}
+\begin{DoxyItemize}
+\item {\ttfamily function\+Code} -\/ the code of the function to be called.
+\item {\ttfamily value} -\/ a value to be passed to the function.
+\end{DoxyItemize}
+
+{\bfseries{Returns\+:}}
+\begin{DoxyItemize}
+\item true -\/ the function returned true (whatever that means).
+\item false -\/ the function returned false (whatever that means).
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \{c++\}}
+\DoxyCodeLine{bool\ validateAddress\ (unsigned\ char\ functionCode)}
+
+\end{DoxyCode}
+ Check that a function code is mapped to a function.
+
+{\bfseries{Parameters}}
+\begin{DoxyItemize}
+\item {\ttfamily function\+Code} -\/ the functiom code to be checked.
+\end{DoxyItemize}
+
+{\bfseries{Returns\+:}}
+\begin{DoxyItemize}
+\item true -\/ if a Function\+Map exists with the specified function code.
+\item false -\/ if there is no Function\+Map with the specified function code.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{class Function\+Mapper\+::\+Function\+Map}\label{md__r_e_a_d_m_e_autotoc_md6}
+\DoxyHorRuler{0}
+
+
+\doxysubparagraph*{API documentation generated using \href{https://github.com/d99kris/doxygenmd}{\texttt{ Doxygenmd}}}

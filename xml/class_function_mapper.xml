@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="class_function_mapper" kind="class" language="C++" prot="public">
+    <compoundname>FunctionMapper</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ModuleOperatorInterfaceClient</basecompoundref>
+    <includes refid="_function_mapper_8h" local="no">FunctionMapper.h</includes>
+    <innerclass refid="struct_function_mapper_1_1_function_map" prot="public">FunctionMapper::FunctionMap</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_function_mapper_1a5daea7cb38ea0d8e05b83999a5d970e4" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int FunctionMapper::arraySize</definition>
+        <argsstring></argsstring>
+        <name>arraySize</name>
+        <qualifiedname>FunctionMapper::arraySize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FunctionMapper.h" line="99" column="18" bodyfile="FunctionMapper.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_function_mapper_1a8718615d3fcee374dc2534449fec7d2b" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> *</type>
+        <definition>FunctionMap* FunctionMapper::functionMapArray</definition>
+        <argsstring></argsstring>
+        <name>functionMapArray</name>
+        <qualifiedname>FunctionMapper::functionMapArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FunctionMapper.h" line="100" column="17" bodyfile="FunctionMapper.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_function_mapper_1a3e49c4e7559038ea0a7d3d979fd16431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FunctionMapper::FunctionMapper</definition>
+        <argsstring>(FunctionMap *functionMapArray, unsigned int size=0)</argsstring>
+        <name>FunctionMapper</name>
+        <qualifiedname>FunctionMapper::FunctionMapper</qualifiedname>
+        <param>
+          <type><ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> *</type>
+          <declname>functionMapArray</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Zero or more <ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor. <linebreak/>
+ <programlisting filename=".unparsed"><codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>0);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>1);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>0<sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">FunctionHandler<sp/>myFunctionHandler(myFunctionMap);</highlight></codeline>
+</programlisting> <linebreak/>
+ With a single array argument the <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object is sized to accommodate the supplied map array and use of the <computeroutput><ref refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" kindref="member">addHandler()</ref></computeroutput> method (see below) is not possible. <linebreak/>
+ Optionally the constructor can be passed a second argument which specifies the maximum size of the FunctionHandler and, so long as the supplied array doesn&apos;t fill the map, <ref refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" kindref="member">addHandler()</ref> can be used to dynamically add more maps to the FunctionHandler after instantiation. <linebreak/>
+ <programlisting><codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>functionCode,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value)-&gt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">((value<sp/>%<sp/>2)<sp/>==<sp/>0);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>functionCode,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value)-&gt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">((value<sp/>%<sp/>2)<sp/>==<sp/>1);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>0<sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">FunctionHandler<sp/>myFunctionHandler(myFunctionMap,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal">myFunctionHandler.addHandler(9,<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>functionCode,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value)-&gt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(value<sp/>&gt;<sp/>99);<sp/>});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isBig<sp/>=<sp/>myFunctionHandler.process(9,<sp/>101);</highlight></codeline>
+</programlisting> <linebreak/>
+ <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>functionMapArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- array of <ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> structures or 0. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- the maximum number of FunctionMaps that can be saved in FunctionHandler or zero (the default) to size FunctionHandler so that it can only hold</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>functionMapArray.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FunctionMapper.h" line="67" column="5" bodyfile="FunctionMapper.cpp" bodystart="3" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FunctionMapper::addHandler</definition>
+        <argsstring>(unsigned char functionCode, bool(*handler)(unsigned char, unsigned char))</argsstring>
+        <name>addHandler</name>
+        <qualifiedname>FunctionMapper::addHandler</qualifiedname>
+        <param>
+          <type>unsigned char</type>
+          <declname>functionCode</declname>
+        </param>
+        <param>
+          <type>bool(*)(unsigned char, unsigned char)</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Add a new <ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> to an existing <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>functionCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- the value of the map code property. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- the handler function to associate with functionCode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true - suceess. </para>
+</simplesect>
+<simplesect kind="return"><para>false - failure (the <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> was full). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FunctionMapper.h" line="77" column="10" bodyfile="FunctionMapper.cpp" bodystart="18" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FunctionMapper::validateAddress</definition>
+        <argsstring>(unsigned char functionCode)</argsstring>
+        <name>validateAddress</name>
+        <qualifiedname>FunctionMapper::validateAddress</qualifiedname>
+        <param>
+          <type>unsigned char</type>
+          <declname>functionCode</declname>
+        </param>
+        <briefdescription>
+<para>Check that a function code is mapped to a function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>functionCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- the functiom code to be checked. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true - if a <ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> exists with the specified function code. </para>
+</simplesect>
+<simplesect kind="return"><para>false - if there is no <ref refid="struct_function_mapper_1_1_function_map" kindref="compound">FunctionMap</ref> with the specified function code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FunctionMapper.h" line="86" column="10" bodyfile="FunctionMapper.cpp" bodystart="30" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FunctionMapper::processValue</definition>
+        <argsstring>(unsigned char functionCode, unsigned char value)</argsstring>
+        <name>processValue</name>
+        <qualifiedname>FunctionMapper::processValue</qualifiedname>
+        <param>
+          <type>unsigned char</type>
+          <declname>functionCode</declname>
+        </param>
+        <param>
+          <type>unsigned char</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>functionCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- the code of the function to be called. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- a value to be passed to the function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true - the function returned true (whatever that means). </para>
+</simplesect>
+<simplesect kind="return"><para>false - the function returned false (whatever that means). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FunctionMapper.h" line="96" column="10" bodyfile="FunctionMapper.cpp" bodystart="42" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class providing a mapping between integer function codes and associated functions which support the requirements of <computeroutput>ModuleInterfaceHandler</computeroutput>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>FunctionMapper</label>
+        <link refid="class_function_mapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ModuleOperatorInterfaceClient</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>FunctionMapper</label>
+        <link refid="class_function_mapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ModuleOperatorInterfaceClient</label>
+      </node>
+    </collaborationgraph>
+    <location file="FunctionMapper.h" line="11" column="1" bodyfile="FunctionMapper.h" bodystart="11" bodyend="102"/>
+    <listofallmembers>
+      <member refid="class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931" prot="public" virt="non-virtual"><scope>FunctionMapper</scope><name>addHandler</name></member>
+      <member refid="class_function_mapper_1a5daea7cb38ea0d8e05b83999a5d970e4" prot="private" virt="non-virtual"><scope>FunctionMapper</scope><name>arraySize</name></member>
+      <member refid="class_function_mapper_1a8718615d3fcee374dc2534449fec7d2b" prot="private" virt="non-virtual"><scope>FunctionMapper</scope><name>functionMapArray</name></member>
+      <member refid="class_function_mapper_1a3e49c4e7559038ea0a7d3d979fd16431" prot="public" virt="non-virtual"><scope>FunctionMapper</scope><name>FunctionMapper</name></member>
+      <member refid="class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334" prot="public" virt="non-virtual"><scope>FunctionMapper</scope><name>processValue</name></member>
+      <member refid="class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7" prot="public" virt="non-virtual"><scope>FunctionMapper</scope><name>validateAddress</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

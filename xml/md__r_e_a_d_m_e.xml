@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="md__r_e_a_d_m_e" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>class FunctionMapper</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class providing a mapping between integer function codes and associated functions which support the requirements of \fCModuleInterfaceHandler. <linebreak/>
+</para>
+<para><hruler/>
+</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">FunctionMapper<sp/>(FunctionMap<sp/>*<sp/>functionMapArray,<sp/>unsigned<sp/>int<sp/>size<sp/>=<sp/>0)</highlight></codeline>
+</programlisting> Construct a new <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object. Zero or more FunctionMap definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor.</para>
+<para>.nf FunctionMap myFunctionMap[] = { { 0, [](unsigned char functionCode, unsigned char value)-&gt;bool{ return((value % 2) == 0); } }, { 1, [](unsigned char functionCode, unsigned char value)-&gt;bool{ return((value % 2) == 1); } }, { 0, 0 } } FunctionHandler myFunctionHandler(myFunctionMap); .fi</para>
+<para>With a single array argument the <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> object is sized to accommodate the supplied map array and use of the \fCaddHandler() method (see below) is not possible. Optionally the constructor can be passed a second argument which specifies the maximum size of the FunctionHandler and, so long as the supplied array doesn&apos;t fill the map, addHandler() can be used to dynamically add more maps to the FunctionHandler after instantiation.</para>
+<para>.nf FunctionMap myFunctionMap[] = { { 0, [](unsigned char functionCode, unsigned char value)-&gt;bool{ return((value % 2) == 0); } }, { 1, [](unsigned char functionCode, unsigned char value)-&gt;bool{ return((value % 2) == 1); } }, { 0, 0 } } FunctionHandler myFunctionHandler(myFunctionMap, 10); myFunctionHandler.addHandler(9, [](unsigned char functionCode, unsigned char value)-&gt;bool{ return(value &gt; 99); }); bool isBig = myFunctionHandler.process(9, 101); .fi</para>
+<para><bold>Parameters</bold><itemizedlist>
+<listitem><para><computeroutput>functionMapArray</computeroutput> - array of FunctionMap structures or 0.</para>
+</listitem><listitem><para><computeroutput>size</computeroutput> - the maximum number of FunctionMaps that can be saved in FunctionHandler or zero (the default) to size FunctionHandler so that it can only hold</para>
+</listitem><listitem><para><computeroutput>functionMapArray.</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>addHandler<sp/>(unsigned<sp/>char<sp/>functionCode,<sp/>bool(*)(unsigned<sp/>char,<sp/>unsigned<sp/>char)<sp/>handler)</highlight></codeline>
+</programlisting> Add a new FunctionMap to an existing <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref>.</para>
+<para><bold>Parameters</bold><itemizedlist>
+<listitem><para><computeroutput>functionCode</computeroutput> - the value of the map code property.</para>
+</listitem><listitem><para><computeroutput>handler</computeroutput> - the handler function to associate with functionCode.</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Returns:</bold><itemizedlist>
+<listitem><para>true - suceess.</para>
+</listitem><listitem><para>false - failure (the <ref refid="class_function_mapper" kindref="compound">FunctionMapper</ref> was full).</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>processValue<sp/>(unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)</highlight></codeline>
+</programlisting></para>
+<para><bold>Parameters</bold><itemizedlist>
+<listitem><para><computeroutput>functionCode</computeroutput> - the code of the function to be called.</para>
+</listitem><listitem><para><computeroutput>value</computeroutput> - a value to be passed to the function.</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Returns:</bold><itemizedlist>
+<listitem><para>true - the function returned true (whatever that means).</para>
+</listitem><listitem><para>false - the function returned false (whatever that means).</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>validateAddress<sp/>(unsigned<sp/>char<sp/>functionCode)</highlight></codeline>
+</programlisting> Check that a function code is mapped to a function.</para>
+<para><bold>Parameters</bold><itemizedlist>
+<listitem><para><computeroutput>functionCode</computeroutput> - the functiom code to be checked.</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Returns:</bold><itemizedlist>
+<listitem><para>true - if a FunctionMap exists with the specified function code.</para>
+</listitem><listitem><para>false - if there is no FunctionMap with the specified function code.</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md6">
+<title>class FunctionMapper::FunctionMap</title>
+<para><hruler/>
+</para>
+<para><heading level="5">API documentation generated using <ulink url="https://github.com/d99kris/doxygenmd">Doxygenmd</ulink></heading>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

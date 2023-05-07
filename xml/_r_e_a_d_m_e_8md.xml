@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">##<sp/>class<sp/>FunctionMapper</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Class<sp/>providing<sp/>a<sp/>mapping<sp/>between<sp/>integer<sp/>function<sp/>codes<sp/>and<sp/>associated<sp/>functions<sp/>which<sp/>support<sp/>the<sp/>requirements<sp/>of<sp/>\fCModuleInterfaceHandler.<sp/><sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">FunctionMapper<sp/>(FunctionMap<sp/>*<sp/>functionMapArray,<sp/>unsigned<sp/>int<sp/>size<sp/>=<sp/>0)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Construct<sp/>a<sp/>new<sp/>FunctionMapper<sp/>object.<sp/>Zero<sp/>or<sp/>more<sp/>FunctionMap<sp/>definitions<sp/>can<sp/>be<sp/>added<sp/>to<sp/>the<sp/>new<sp/>FunctionHandler<sp/>by<sp/>passing<sp/>a<sp/>statically<sp/>allocated<sp/>array<sp/>of<sp/>FunctionMaps<sp/>to<sp/>the<sp/>constructor.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">.nf</highlight></codeline>
+<codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>0);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>1);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>0<sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">FunctionHandler<sp/>myFunctionHandler(myFunctionMap);</highlight></codeline>
+<codeline><highlight class="normal">.fi</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>With<sp/>a<sp/>single<sp/>array<sp/>argument<sp/>the<sp/>FunctionMapper<sp/>object<sp/>is<sp/>sized<sp/>to<sp/>accommodate<sp/>the<sp/>supplied<sp/>map<sp/>array<sp/>and<sp/>use<sp/>of<sp/>the<sp/>\fCaddHandler()<sp/>method<sp/>(see<sp/>below)<sp/>is<sp/>not<sp/>possible.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>Optionally<sp/>the<sp/>constructor<sp/>can<sp/>be<sp/>passed<sp/>a<sp/>second<sp/>argument<sp/>which<sp/>specifies<sp/>the<sp/>maximum<sp/>size<sp/>of<sp/>the<sp/>FunctionHandler<sp/>and,<sp/>so<sp/>long<sp/>as<sp/>the<sp/>supplied<sp/>array<sp/>doesn&apos;t<sp/>fill<sp/>the<sp/>map,<sp/>addHandler()<sp/>can<sp/>be<sp/>used<sp/>to<sp/>dynamically<sp/>add<sp/>more<sp/>maps<sp/>to<sp/>the<sp/>FunctionHandler<sp/>after<sp/>instantiation.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">.nf</highlight></codeline>
+<codeline><highlight class="normal">FunctionMap<sp/>myFunctionMap[]<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>0);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return((value<sp/>%<sp/>2)<sp/>==<sp/>1);<sp/>}<sp/>},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>0<sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">FunctionHandler<sp/>myFunctionHandler(myFunctionMap,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal">myFunctionHandler.addHandler(9,<sp/>[](unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)-&gt;bool{<sp/>return(value<sp/>&gt;<sp/>99);<sp/>});</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>isBig<sp/>=<sp/>myFunctionHandler.process(9,<sp/>101);</highlight></codeline>
+<codeline><highlight class="normal">.fi</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Parameters**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`functionMapArray`<sp/>-<sp/>array<sp/>of<sp/>FunctionMap<sp/>structures<sp/>or<sp/>0.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`size`<sp/>-<sp/>the<sp/>maximum<sp/>number<sp/>of<sp/>FunctionMaps<sp/>that<sp/>can<sp/>be<sp/>saved<sp/>in<sp/>FunctionHandler<sp/>or<sp/>zero<sp/>(the<sp/>default)<sp/>to<sp/>size<sp/>FunctionHandler<sp/>so<sp/>that<sp/>it<sp/>can<sp/>only<sp/>hold</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`functionMapArray.`<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>addHandler<sp/>(unsigned<sp/>char<sp/>functionCode,<sp/>bool(*)(unsigned<sp/>char,<sp/>unsigned<sp/>char)<sp/>handler)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Add<sp/>a<sp/>new<sp/>FunctionMap<sp/>to<sp/>an<sp/>existing<sp/>FunctionMapper.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Parameters**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`functionCode`<sp/>-<sp/>the<sp/>value<sp/>of<sp/>the<sp/>map<sp/>code<sp/>property.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`handler`<sp/>-<sp/>the<sp/>handler<sp/>function<sp/>to<sp/>associate<sp/>with<sp/>functionCode.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Returns:**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>true<sp/>-<sp/>suceess.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>false<sp/>-<sp/>failure<sp/>(the<sp/>FunctionMapper<sp/>was<sp/>full).<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>processValue<sp/>(unsigned<sp/>char<sp/>functionCode,<sp/>unsigned<sp/>char<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Parameters**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`functionCode`<sp/>-<sp/>the<sp/>code<sp/>of<sp/>the<sp/>function<sp/>to<sp/>be<sp/>called.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`value`<sp/>-<sp/>a<sp/>value<sp/>to<sp/>be<sp/>passed<sp/>to<sp/>the<sp/>function.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Returns:**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>true<sp/>-<sp/>the<sp/>function<sp/>returned<sp/>true<sp/>(whatever<sp/>that<sp/>means).<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>false<sp/>-<sp/>the<sp/>function<sp/>returned<sp/>false<sp/>(whatever<sp/>that<sp/>means).<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>validateAddress<sp/>(unsigned<sp/>char<sp/>functionCode)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Check<sp/>that<sp/>a<sp/>function<sp/>code<sp/>is<sp/>mapped<sp/>to<sp/>a<sp/>function.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Parameters**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`functionCode`<sp/>-<sp/>the<sp/>functiom<sp/>code<sp/>to<sp/>be<sp/>checked.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Returns:**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>true<sp/>-<sp/>if<sp/>a<sp/>FunctionMap<sp/>exists<sp/>with<sp/>the<sp/>specified<sp/>function<sp/>code.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>false<sp/>-<sp/>if<sp/>there<sp/>is<sp/>no<sp/>FunctionMap<sp/>with<sp/>the<sp/>specified<sp/>function<sp/>code.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>class<sp/>FunctionMapper::FunctionMap</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">######<sp/>API<sp/>documentation<sp/>generated<sp/>using<sp/>[Doxygenmd](https://github.com/d99kris/doxygenmd)</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>
