@@ -28,14 +28,14 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * FunctionHandler by passing a statically allocated array of
      * FunctionMaps to the constructor.
      * \n 
-     * @code{, unparsed}
+     * @verbatim
      * FunctionMap myFunctionMap[] = {
      *   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
      *   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
      *   { 0, 0 }
      * }
      * FunctionHandler myFunctionHandler(myFunctionMap);
-     * @endcode
+     * @endverbatim
      * \n 
      * With a single array argument the FunctionMapper object is sized
      * to accommodate the supplied map array and use of the \p addHandler()

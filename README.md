@@ -10,13 +10,13 @@ FunctionMapper (FunctionMap * functionMapArray, unsigned int size = 0)
 Construct a new FunctionMapper object. Zero or more FunctionMap definitions can be added to the new FunctionHandler by passing a statically allocated array of FunctionMaps to the constructor. 
  
 .nf
-{ unparsed} 
-FunctionMap myFunctionMap[] = {
-  { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
-  { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
-  { 0, 0 }
-}
-FunctionHandler myFunctionHandler(myFunctionMap);
+* FunctionMap myFunctionMap[] = {
+*   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
+*   { 1, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 1); } },
+*   { 0, 0 }
+* }
+* FunctionHandler myFunctionHandler(myFunctionMap);
+* 
 .fi
  
  With a single array argument the FunctionMapper object is sized to accommodate the supplied map array and use of the \fCaddHandler() method (see below) is not possible. 
