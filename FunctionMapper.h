@@ -4,8 +4,8 @@
 #include <ModuleOperatorInterfaceClient.h>
 
 /**
- * @brief Class providing a processing interface and storage for an
- * arbitrary number of FunctionMaps.
+ * @brief Processing interface and storage for an arbitrary number of
+ * FunctionMaps.
  * \n 
  * A FunctionMap implements a mapping between an integer function code
  * and a function which complies with the requirements of
@@ -98,7 +98,7 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * @return true        - if a FunctionMap exists with the specified function code.
      * @return false       - if there is no FunctionMap with the specified function code.
      */
-    bool validateAddress(unsigned char functionCode);
+    bool validateAddress(unsigned int functionCode);
 
     /**
      * @brief 
@@ -108,7 +108,7 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * @return true        - the function returned true (whatever that means).
      * @return false       - the function returned false (whatever that means).
      */
-    bool processValue(unsigned char functionCode, unsigned char value);
+    bool processValue(unsigned int functionCode, unsigned char value);
 
   private:
     unsigned int arraySize;

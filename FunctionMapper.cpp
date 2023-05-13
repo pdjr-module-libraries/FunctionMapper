@@ -31,7 +31,7 @@ bool FunctionMapper::addHandler(unsigned char functionCode, bool (*handler)(unsi
   return(slot != -1);
 }
 
-bool FunctionMapper::validateAddress(unsigned char functionCode) {
+bool FunctionMapper::validateAddress(unsigned int functionCode) {
   bool retval = false;
 
   for (unsigned int i = 0; this->functionMapArray[i].handler != 0; i++) {
@@ -43,7 +43,7 @@ bool FunctionMapper::validateAddress(unsigned char functionCode) {
   return(retval);
 }
 
-bool FunctionMapper::processValue(unsigned char functionCode, unsigned char value) {
+bool FunctionMapper::processValue(unsigned int functionCode, unsigned char value) {
   bool retval = false;
 
   for (unsigned int i = 0; this->functionMapArray[i].handler != 0; i++) {
