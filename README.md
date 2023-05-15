@@ -7,11 +7,11 @@ class FunctionMapper
 
 ADT implementing a jump vector.
 
-The class implements a mechanism which supports firmware using the ModuleOperatorInteraction class by allowing a one byte address to trigger execution of an associated function which may take a one byte argument.
+The class implements a mechanism which supports firmware using the ModuleOperatorInterface class by allowing a one byte address to trigger execution of an associated function which may take a one byte argument.
 
 Each entry in the jump vector is a pair of the form:
 
-{ unsigned int address, (bool *function)(unsigned char value) }
+{ unsigned int address, (bool *function)(unsigned char address, unsigned char value) }
 
 Entries can be added to the jump vector at instantiation and or dynamically.
 
