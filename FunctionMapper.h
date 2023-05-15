@@ -7,13 +7,13 @@
  * @brief ADT implementing a jump vector.
  * 
  * The class implements a mechanism which supports firmware using the
- * ModuleOperatorInteraction class by allowing a one byte address to
+ * ModuleOperatorInterface class by allowing a one byte address to
  * trigger execution of an associated function which may take a one
  * byte argument.
  * 
  * Each entry in the jump vector is a pair of the form:
  * 
- * { unsigned int address, (bool *function)(unsigned char value) }
+ * { unsigned int address, (bool *function)(unsigned char address, unsigned char value) }
  * 
  * Entries can be added to the jump vector at instantiation and or
  * dynamically.
@@ -23,8 +23,9 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
   public:
 
     /**
-     * @brief Structure mapping an integer function code to an
-     * associated handler function.
+     * @brief Structure mapping an integer code to an associated
+     * handler function.
+     * 
      * @var functionCode - a unique integer value identifying the associated function.
      * @var handler - \p ModuleOperatorInterfaceHandler function.
      */
