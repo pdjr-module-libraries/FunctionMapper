@@ -4,19 +4,19 @@
 #include <ModuleOperatorInterfaceClient.h>
 
 /**
- * @brief Processing interface and storage for an arbitrary number of
- * FunctionMaps.
- * \n 
- * A FunctionMap implements a mapping between an integer function code
- * and a function which complies with the requirements of
- * ModuleInterfaceHandler.
- * The following example shows a FunctionMap associating function code
- * (0) with an anonymous lambda function.
- * \n 
- * @code{.unparsed}
- * { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } }
- * @endcode
- * \n 
+ * @brief ADT implementing a jump vector.
+ * 
+ * The class implements a mechanism which supports firmware using the
+ * ModuleOperatorInteraction class by allowing a one byte address to
+ * trigger execution of an associated function which may take a one
+ * byte argument.
+ * 
+ * Each entry in the jump vector is a pair of the form:
+ * 
+ * { unsigned int address, (bool *function)(unsigned char value) }
+ * 
+ * Entries can be added to the jump vector at instantiation and or
+ * dynamically.
  */
 class FunctionMapper: public ModuleOperatorInterfaceClient {
   
@@ -33,8 +33,8 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
     /**
      * @brief Construct a new FunctionMapper object.
      * 
-     * Zero or more FunctionMaps can be added to the new FunctionMapper
-     * by passing a statically allocated array of FunctionMaps to the
+     * Zero or more FunctionMaps can be added to the FunctionMapper by
+     * passing a statically allocated array of FunctionMaps to the
      * constructor.
      * \n 
      * @code{.unparsed}
@@ -73,11 +73,8 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
      * bool isBig = myFunctionHandler.process(9, 101);
      * @endcode
      * \n 
-     * @param functionMapArray - optional array of FunctionMap structures.
-     * @param size - optional maximum number of FunctionMaps that can be
-     * saved in this FunctionMapper. If a functionMapArray is supplied
-     * and size is ommitted then the FunctionMapper will be sized to
-     * exactly hold \p functionMapArray. 
+     * @param functionMapArray - array of FunctionMap structures (optional, defaults to empty).
+     * @param size - maximum number of FunctionMaps that can be saved in this FunctionMapper (optional: defaults to size of \a functionMapArray).
      */
     FunctionMapper(FunctionMap *functionMapArray = 0, unsigned int size = 0);
 
@@ -101,12 +98,12 @@ class FunctionMapper: public ModuleOperatorInterfaceClient {
     bool validateAddress(unsigned int functionCode);
 
     /**
-     * @brief 
+     * @brief Execute a function. 
      * 
      * @param functionCode - the code of the function to be called.
      * @param value        - a value to be passed to the function.
      * @return true        - the function returned true (whatever that means).
-     * @return false       - the function returned false (whatever that means).
+     * @return false       - the function returned false (whatever that means) or \a functionCode was not defined.
      */
     bool processValue(unsigned int functionCode, unsigned char value);
 

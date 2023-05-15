@@ -5,30 +5,32 @@ class FunctionMapper
   : public ModuleOperatorInterfaceClient
 ```  
 
-Class providing a processing interface and storage for an arbitrary number of FunctionMaps. 
- A [FunctionMap](#struct_function_mapper_1_1_function_map) implements a mapping between an integer function code and a function which complies with the requirements of ModuleInterfaceHandler. The following example shows a [FunctionMap](#struct_function_mapper_1_1_function_map) associating function code (0) with an anonymous lambda function. 
-.
+ADT implementing a jump vector.
 
-```cpp
-{ 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } }
-```
+The class implements a mechanism which supports firmware using the ModuleOperatorInteraction class by allowing a one byte address to trigger execution of an associated function which may take a one byte argument.
+
+Each entry in the jump vector is a pair of the form:
+
+{ unsigned int address, (bool *function)(unsigned char value) }
+
+Entries can be added to the jump vector at instantiation and or dynamically.
 
 ## Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public  `[`FunctionMapper`](#class_function_mapper_1a0da0673c8c109e95f1d075b6935cbecd)`(`[`FunctionMap`](#struct_function_mapper_1_1_function_map)` * functionMapArray,unsigned int size)` | Construct a new [FunctionMapper](#class_function_mapper) object.
-`public bool `[`addHandler`](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)`(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)` | Add a new [FunctionMap](#struct_function_mapper_1_1_function_map) to an existing [FunctionMapper](#class_function_mapper).
-`public bool `[`validateAddress`](#class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7)`(unsigned char functionCode)` | Check that a function code is mapped to a function.
-`public bool `[`processValue`](#class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334)`(unsigned char functionCode,unsigned char value)` | #### Parameters
+`public  `[`FunctionMapper`](#classFunctionMapper_1a0da0673c8c109e95f1d075b6935cbecd)`(`[`FunctionMap`](#structFunctionMapper_1_1FunctionMap)` * functionMapArray,unsigned int size)` | Construct a new [FunctionMapper](#classFunctionMapper) object.
+`public bool `[`addHandler`](#classFunctionMapper_1a8445f7492e82da8fe6dbbb957e9fc931)`(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)` | Add a new [FunctionMap](#structFunctionMapper_1_1FunctionMap) to an existing [FunctionMapper](#classFunctionMapper).
+`public bool `[`validateAddress`](#classFunctionMapper_1a231f177fee08f712ca4959e1bb93ce55)`(unsigned int functionCode)` | Check that a function code is mapped to a function.
+`public bool `[`processValue`](#classFunctionMapper_1a8a437efb9a90f80c661aaf22c07de571)`(unsigned int functionCode,unsigned char value)` | Execute a function.
 
 ## Members
 
-#### `public  `[`FunctionMapper`](#class_function_mapper_1a0da0673c8c109e95f1d075b6935cbecd)`(`[`FunctionMap`](#struct_function_mapper_1_1_function_map)` * functionMapArray,unsigned int size)` 
+#### `public  `[`FunctionMapper`](#classFunctionMapper_1a0da0673c8c109e95f1d075b6935cbecd)`(`[`FunctionMap`](#structFunctionMapper_1_1FunctionMap)` * functionMapArray,unsigned int size)` 
 
-Construct a new [FunctionMapper](#class_function_mapper) object.
+Construct a new [FunctionMapper](#classFunctionMapper) object.
 
-Zero or more FunctionMaps can be added to the new [FunctionMapper](#class_function_mapper) by passing a statically allocated array of FunctionMaps to the constructor. 
+Zero or more FunctionMaps can be added to the [FunctionMapper](#classFunctionMapper) by passing a statically allocated array of FunctionMaps to the constructor. 
 ```cpp
 FunctionMap myFunctionMap[] = {
   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
@@ -39,8 +41,8 @@ FunctionMap myFunctionMap[] = {
 FunctionHandler myFunctionHandler(myFunctionMap);
 ```
 
- With a single array argument the [FunctionMapper](#class_function_mapper) object is sized to exactly accommodate the supplied map array and subsequent use of the `[addHandler()](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method is not possible. 
- Optionally the constructor can be passed a second argument which specifies the maximum number of FunctionMaps that can be stored in the new [FunctionMapper](#class_function_mapper). So long as any supplied function map array has no more than `size` elements, the `[addHandler()](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method can be used to dynamically add more maps to the FunctionHandler after instantiation. 
+ With a single array argument the [FunctionMapper](#classFunctionMapper) object is sized to exactly accommodate the supplied map array and subsequent use of the `[addHandler()](#classFunctionMapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method is not possible. 
+ Optionally the constructor can be passed a second argument which specifies the maximum number of FunctionMaps that can be stored in the new [FunctionMapper](#classFunctionMapper). So long as any supplied function map array has no more than `size` elements, the `[addHandler()](#classFunctionMapper_1a8445f7492e82da8fe6dbbb957e9fc931)` method can be used to dynamically add more maps to the FunctionHandler after instantiation. 
 ```cpp
 FunctionMap myFunctionMap[] = {
   { 0, [](unsigned char functionCode, unsigned char value)->bool{ return((value % 2) == 0); } },
@@ -56,13 +58,13 @@ bool isBig = myFunctionHandler.process(9, 101);
 ```
 
 #### Parameters
-* `functionMapArray` - optional array of [FunctionMap](#struct_function_mapper_1_1_function_map) structures. 
+* `functionMapArray` - array of [FunctionMap](#structFunctionMapper_1_1FunctionMap) structures (optional, defaults to empty). 
 
-* `size` - optional maximum number of FunctionMaps that can be saved in this [FunctionMapper](#class_function_mapper). If a functionMapArray is supplied and size is ommitted then the [FunctionMapper](#class_function_mapper) will be sized to exactly hold `functionMapArray`.
+* `size` - maximum number of FunctionMaps that can be saved in this [FunctionMapper](#classFunctionMapper) (optional: defaults to size of *functionMapArray*).
 
-#### `public bool `[`addHandler`](#class_function_mapper_1a8445f7492e82da8fe6dbbb957e9fc931)`(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)` 
+#### `public bool `[`addHandler`](#classFunctionMapper_1a8445f7492e82da8fe6dbbb957e9fc931)`(unsigned char functionCode,bool(*)(unsigned char, unsigned char) handler)` 
 
-Add a new [FunctionMap](#struct_function_mapper_1_1_function_map) to an existing [FunctionMapper](#class_function_mapper).
+Add a new [FunctionMap](#structFunctionMapper_1_1FunctionMap) to an existing [FunctionMapper](#classFunctionMapper).
 
 #### Parameters
 * `functionCode` - the value of the map code property. 
@@ -73,9 +75,9 @@ Add a new [FunctionMap](#struct_function_mapper_1_1_function_map) to an existing
 true - suceess. 
 
 #### Returns
-false - failure (the [FunctionMapper](#class_function_mapper) was full).
+false - failure (the [FunctionMapper](#classFunctionMapper) was full).
 
-#### `public bool `[`validateAddress`](#class_function_mapper_1aeeae983303efa97168866e8ff68cf7c7)`(unsigned char functionCode)` 
+#### `public bool `[`validateAddress`](#classFunctionMapper_1a231f177fee08f712ca4959e1bb93ce55)`(unsigned int functionCode)` 
 
 Check that a function code is mapped to a function.
 
@@ -83,12 +85,14 @@ Check that a function code is mapped to a function.
 * `functionCode` - the functiom code to be checked. 
 
 #### Returns
-true - if a [FunctionMap](#struct_function_mapper_1_1_function_map) exists with the specified function code. 
+true - if a [FunctionMap](#structFunctionMapper_1_1FunctionMap) exists with the specified function code. 
 
 #### Returns
-false - if there is no [FunctionMap](#struct_function_mapper_1_1_function_map) with the specified function code.
+false - if there is no [FunctionMap](#structFunctionMapper_1_1FunctionMap) with the specified function code.
 
-#### `public bool `[`processValue`](#class_function_mapper_1abb6078f5a7556add80f6587c5b2d1334)`(unsigned char functionCode,unsigned char value)` 
+#### `public bool `[`processValue`](#classFunctionMapper_1a8a437efb9a90f80c661aaf22c07de571)`(unsigned int functionCode,unsigned char value)` 
+
+Execute a function.
 
 #### Parameters
 * `functionCode` - the code of the function to be called. 
@@ -99,7 +103,7 @@ false - if there is no [FunctionMap](#struct_function_mapper_1_1_function_map) w
 true - the function returned true (whatever that means). 
 
 #### Returns
-false - the function returned false (whatever that means).
+false - the function returned false (whatever that means) or *functionCode* was not defined.
 
 # struct `FunctionMapper::FunctionMap` 
 
@@ -107,13 +111,13 @@ false - the function returned false (whatever that means).
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public unsigned int `[`functionCode`](#struct_function_mapper_1_1_function_map_1ae62581031d4d9bac8219e1cff35121e9) | 
-`public bool(* `[`handler`](#struct_function_mapper_1_1_function_map_1a7050c1e20eb24dba37ff380f83edb48a) | 
+`public unsigned int `[`functionCode`](#structFunctionMapper_1_1FunctionMap_1ae62581031d4d9bac8219e1cff35121e9) | 
+`public bool(* `[`handler`](#structFunctionMapper_1_1FunctionMap_1a7050c1e20eb24dba37ff380f83edb48a) | 
 
 ## Members
 
-#### `public unsigned int `[`functionCode`](#struct_function_mapper_1_1_function_map_1ae62581031d4d9bac8219e1cff35121e9) 
+#### `public unsigned int `[`functionCode`](#structFunctionMapper_1_1FunctionMap_1ae62581031d4d9bac8219e1cff35121e9) 
 
-#### `public bool(* `[`handler`](#struct_function_mapper_1_1_function_map_1a7050c1e20eb24dba37ff380f83edb48a) 
+#### `public bool(* `[`handler`](#structFunctionMapper_1_1FunctionMap_1a7050c1e20eb24dba37ff380f83edb48a) 
 
 Generated by [Moxygen](https://sourcey.com/moxygen)
